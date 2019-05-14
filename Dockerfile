@@ -17,18 +17,18 @@ LABEL maintainer="mateumann@gmail.com" \
 
 COPY services /etc/service
 
-RUN apk --update add --no-cache runit tor
-RUN sed "1s/^/SOCKSPort 0.0.0.0:9050\n/; s/^Log\ notice\ .*/Log notice stdout/; s/^DataDirectory.*/DataDirectory \/var\/lib\/tor\/tor.0/; " /etc/tor/torrc.sample > /etc/tor/torrc.0
-RUN sed "1s/^/SOCKSPort 0.0.0.0:19051\n/; s/^Log\ notice\ .*/Log notice stdout/; s/^DataDirectory.*/DataDirectory \/var\/lib\/tor\/tor.1/; " /etc/tor/torrc.sample > /etc/tor/torrc.1
-RUN sed "1s/^/SOCKSPort 0.0.0.0:19052\n/; s/^Log\ notice\ .*/Log notice stdout/; s/^DataDirectory.*/DataDirectory \/var\/lib\/tor\/tor.2/; " /etc/tor/torrc.sample > /etc/tor/torrc.2
-RUN sed "1s/^/SOCKSPort 0.0.0.0:19053\n/; s/^Log\ notice\ .*/Log notice stdout/; s/^DataDirectory.*/DataDirectory \/var\/lib\/tor\/tor.3/; " /etc/tor/torrc.sample > /etc/tor/torrc.3
-RUN sed "1s/^/SOCKSPort 0.0.0.0:19054\n/; s/^Log\ notice\ .*/Log notice stdout/; s/^DataDirectory.*/DataDirectory \/var\/lib\/tor\/tor.4/; " /etc/tor/torrc.sample > /etc/tor/torrc.4
-RUN sed "1s/^/SOCKSPort 0.0.0.0:19055\n/; s/^Log\ notice\ .*/Log notice stdout/; s/^DataDirectory.*/DataDirectory \/var\/lib\/tor\/tor.5/; " /etc/tor/torrc.sample > /etc/tor/torrc.5
-RUN sed "1s/^/SOCKSPort 0.0.0.0:19056\n/; s/^Log\ notice\ .*/Log notice stdout/; s/^DataDirectory.*/DataDirectory \/var\/lib\/tor\/tor.6/; " /etc/tor/torrc.sample > /etc/tor/torrc.6
-RUN sed "1s/^/SOCKSPort 0.0.0.0:19057\n/; s/^Log\ notice\ .*/Log notice stdout/; s/^DataDirectory.*/DataDirectory \/var\/lib\/tor\/tor.7/; " /etc/tor/torrc.sample > /etc/tor/torrc.7
-RUN sed "1s/^/SOCKSPort 0.0.0.0:19058\n/; s/^Log\ notice\ .*/Log notice stdout/; s/^DataDirectory.*/DataDirectory \/var\/lib\/tor\/tor.8/; " /etc/tor/torrc.sample > /etc/tor/torrc.8
-RUN mkdir /var/lib/tor/tor.0 /var/lib/tor/tor.1 /var/lib/tor/tor.2 /var/lib/tor/tor.3 /var/lib/tor/tor.4 /var/lib/tor/tor.5 /var/lib/tor/tor.6 /var/lib/tor/tor.7 /var/lib/tor/tor.8
-RUN chown tor -R /etc/service/tor.* /var/lib/tor/
+RUN apk --update add --no-cache runit tor && \
+    sed "1s/^/SOCKSPort 0.0.0.0:9050\n/; s/^Log\ notice\ .*/Log notice stdout/; s/^DataDirectory.*/DataDirectory \/var\/lib\/tor\/tor.0/; " /etc/tor/torrc.sample > /etc/tor/torrc.0 && \
+    sed "1s/^/SOCKSPort 0.0.0.0:19051\n/; s/^Log\ notice\ .*/Log notice stdout/; s/^DataDirectory.*/DataDirectory \/var\/lib\/tor\/tor.1/; " /etc/tor/torrc.sample > /etc/tor/torrc.1 && \
+    sed "1s/^/SOCKSPort 0.0.0.0:19052\n/; s/^Log\ notice\ .*/Log notice stdout/; s/^DataDirectory.*/DataDirectory \/var\/lib\/tor\/tor.2/; " /etc/tor/torrc.sample > /etc/tor/torrc.2 && \
+    sed "1s/^/SOCKSPort 0.0.0.0:19053\n/; s/^Log\ notice\ .*/Log notice stdout/; s/^DataDirectory.*/DataDirectory \/var\/lib\/tor\/tor.3/; " /etc/tor/torrc.sample > /etc/tor/torrc.3 && \
+    sed "1s/^/SOCKSPort 0.0.0.0:19054\n/; s/^Log\ notice\ .*/Log notice stdout/; s/^DataDirectory.*/DataDirectory \/var\/lib\/tor\/tor.4/; " /etc/tor/torrc.sample > /etc/tor/torrc.4 && \
+    sed "1s/^/SOCKSPort 0.0.0.0:19055\n/; s/^Log\ notice\ .*/Log notice stdout/; s/^DataDirectory.*/DataDirectory \/var\/lib\/tor\/tor.5/; " /etc/tor/torrc.sample > /etc/tor/torrc.5 && \
+    sed "1s/^/SOCKSPort 0.0.0.0:19056\n/; s/^Log\ notice\ .*/Log notice stdout/; s/^DataDirectory.*/DataDirectory \/var\/lib\/tor\/tor.6/; " /etc/tor/torrc.sample > /etc/tor/torrc.6 && \
+    sed "1s/^/SOCKSPort 0.0.0.0:19057\n/; s/^Log\ notice\ .*/Log notice stdout/; s/^DataDirectory.*/DataDirectory \/var\/lib\/tor\/tor.7/; " /etc/tor/torrc.sample > /etc/tor/torrc.7 && \
+    sed "1s/^/SOCKSPort 0.0.0.0:19058\n/; s/^Log\ notice\ .*/Log notice stdout/; s/^DataDirectory.*/DataDirectory \/var\/lib\/tor\/tor.8/; " /etc/tor/torrc.sample > /etc/tor/torrc.8 && \
+    mkdir /var/lib/tor/tor.0 /var/lib/tor/tor.1 /var/lib/tor/tor.2 /var/lib/tor/tor.3 /var/lib/tor/tor.4 /var/lib/tor/tor.5 /var/lib/tor/tor.6 /var/lib/tor/tor.7 /var/lib/tor/tor.8 && \
+    chown tor -R /etc/service/tor.* /var/lib/tor
 
 EXPOSE 9050 19051 19052 19053 19054 19055 19056 19057 19058
 
