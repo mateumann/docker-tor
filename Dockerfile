@@ -30,7 +30,7 @@ RUN sed "1s/^/SOCKSPort 0.0.0.0:19058\n/; s/^Log\ notice\ .*/Log notice stdout/;
 RUN mkdir /var/lib/tor/tor.0 /var/lib/tor/tor.1 /var/lib/tor/tor.2 /var/lib/tor/tor.3 /var/lib/tor/tor.4 /var/lib/tor/tor.5 /var/lib/tor/tor.6 /var/lib/tor/tor.7 /var/lib/tor/tor.8
 RUN chown tor -R /etc/service/tor.* /var/lib/tor/
 
-EXPOSE 9050
+EXPOSE 9050 19051 19052 19053 19054 19055 19056 19057 19058
 
 VOLUME ["/var/lib/tor"]
 
