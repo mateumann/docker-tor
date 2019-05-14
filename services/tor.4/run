@@ -1,0 +1,2 @@
+#!/bin/sh
+exec chpst -u tor:nogroup tor -f /etc/tor/torrc.4
