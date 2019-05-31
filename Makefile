@@ -18,7 +18,7 @@ docker_build_squash:
 		--build-arg VCS_REF=$(GIT_COMMIT) \
 		--squash \
 		-t $(DOCKER_IMAGE):$(GIT_COMMIT) .
-	docker tag $(DOCKER_IMAGE):$(DOCKER_TAG)
+	docker tag $(DOCKER_IMAGE):$(GIT_COMMIT) $(DOCKER_IMAGE):$(DOCKER_TAG)
 
 docker_build:
 	DOCKER_BUILDKIT=1 \
@@ -26,7 +26,7 @@ docker_build:
 		--build-arg BUILD_DATE=`date -u +"%Y-%m-%dT%H:%M:%SZ"` \
 		--build-arg VCS_REF=$(GIT_COMMIT) \
 		-t $(DOCKER_IMAGE):$(GIT_COMMIT) .
-	docker tag $(DOCKER_IMAGE):$(DOCKER_TAG)
+	docker tag $(DOCKER_IMAGE):$(GIT_COMMIT) $(DOCKER_IMAGE):$(DOCKER_TAG)
 
 docker_push:
 	docker tag $(DOCKER_IMAGE):$(GIT_COMMIT) $(DOCKER_IMAGE):$(DOCKER_TAG)
