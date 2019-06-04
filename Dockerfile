@@ -17,6 +17,7 @@ LABEL maintainer="mateumann@gmail.com" \
 
 RUN apk update && \
     apk add --no-cache tor=0.3.4.11-r0 && \
+    rm -rf /var/cache/apk/* && \
     sed "1s/^/SOCKSPort 0.0.0.0:9050\n/; s/^Log\ notice\ .*/Log notice stdout/" /etc/tor/torrc.sample > /etc/tor/torrc
 
 USER tor
