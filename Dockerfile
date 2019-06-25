@@ -24,4 +24,4 @@ USER tor
 
 EXPOSE 9050
 
-CMD ["/usr/bin/tor", "-f", "/etc/tor/torrc"]
+ENTRYPOINT ["/usr/bin/tor", "-f", "/etc/tor/torrc"]
