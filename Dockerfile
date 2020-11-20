@@ -16,9 +16,10 @@ LABEL maintainer="mateumann@gmail.com" \
     com.microscaling.license="MIT"
 
 RUN apk update && \
-    apk add --no-cache tor=0.4.3.5-r0 && \
+    apk add --no-cache tor=0.4.3.7-r0 && \
     rm -rf /var/cache/apk/* && \
-    sed "1s/^/SOCKSPort 0.0.0.0:9050\n/; s/^Log\ notice\ .*/Log notice stdout/" /etc/tor/torrc.sample > /etc/tor/torrc
+    sed "1s/^/SOCKSPort 0.0.0.0:9050\n/; s/^Log\ notice\ .*/Log notice stdout/" /etc/tor/torrc.sample > /etc/tor/torrc && \
+    rm /etc/tor/torrc.sample
 
 USER tor
 
