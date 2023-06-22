@@ -20,7 +20,7 @@ docker_build_squash:
 		--build-arg TOR_VERSION=$(TOR_VERSION) \
 		--squash \
 		-t $(DOCKER_IMAGE):$(GIT_COMMIT) .
-	docker tag $(DOCKER_IMAGE):$(GIT_COMMIT) $(DOCKER_IMAGE):$(TOR_VERSION)-r0
+	docker tag $(DOCKER_IMAGE):$(GIT_COMMIT) $(DOCKER_IMAGE):$(TOR_VERSION)-r2
 	docker tag $(DOCKER_IMAGE):$(GIT_COMMIT) $(DOCKER_IMAGE):$(DOCKER_TAG)
 
 docker_build:
@@ -30,12 +30,12 @@ docker_build:
 		--build-arg VCS_REF=$(GIT_COMMIT) \
 		--build-arg TOR_VERSION=$(TOR_VERSION) \
 		-t $(DOCKER_IMAGE):$(GIT_COMMIT) .
-	docker tag $(DOCKER_IMAGE):$(GIT_COMMIT) $(DOCKER_IMAGE):$(TOR_VERSION)-r0
+	docker tag $(DOCKER_IMAGE):$(GIT_COMMIT) $(DOCKER_IMAGE):$(TOR_VERSION)-r2
 	docker tag $(DOCKER_IMAGE):$(GIT_COMMIT) $(DOCKER_IMAGE):$(DOCKER_TAG)
 
 docker_push:
 	docker push $(DOCKER_IMAGE):$(DOCKER_TAG)
-	docker push $(DOCKER_IMAGE):$(TOR_VERSION)-r0
+	docker push $(DOCKER_IMAGE):$(TOR_VERSION)-r2
 
 output:
 	@echo Docker Image: $(DOCKER_IMAGE):$(TOR_VERSION)
